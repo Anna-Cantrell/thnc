@@ -88,7 +88,10 @@
               <?php the_field( 'street_address' ); ?><br>
               <?php the_field( 'city' ); ?>,
               <?php the_field( 'state' ); ?>
-              <?php the_field( 'zipcode' ); ?>
+              <?php the_field( 'zipcode' ); ?><br>
+              <a href="<?php echo thnc_directions_link(); ?>" target="_blank">
+                <?php echo __('Directions', 'transhealthnc'); ?>
+              </a>
             </p><br>
 
             <p class="location-espanol">
