@@ -415,9 +415,10 @@ function thnc_directions_link() {
 function thnc_pre_get_posts( $query ) {
 
   // stop if admin page
-  if ( is_admin() ) {
-    return;
-  }
+  // kills the map for some reason -.-
+  // if ( is_admin() ) {
+  //   return;
+  // }
 
   // stop if not the main query
   if ( !$query->is_main_query() ) {
