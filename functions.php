@@ -397,6 +397,9 @@ function thnc_acf_google_map_api( $api ){
 }
 add_filter('acf/fields/google_map/api', 'thnc_acf_google_map_api');
 
+
+// adds a link for directions by combining field elements
+//and outputting a directions url
 function thnc_directions_link() {
 	$directions_link = 'https://www.google.com/maps/dir/Current+Location/';
 	$directions_link .= get_field( 'street_address' ) . ' ';
@@ -406,6 +409,96 @@ function thnc_directions_link() {
 	$directions_link = str_replace(' ', '+', $directions_link);
 	echo $directions_link;
 }
+
+
+// queries locations and arranges by distance
+function thnc_pre_get_posts( $query ) {
+
+  // stop if admin page
+  if ( is_admin() ) {
+    return;
+  }
+
+  // stop if not the main query
+  if ( !$query->is_main_query() ) {
+    return;
+  }
+
+  // stop if not locations archive page
+  if ( !is_post_type_archive('locations') ) {
+    return;
+  }
+
+  // defining locations array of all of them
+  $locations = get_posts( array(
+    'post_type' => 'locations',
+    'post_per_page' => -1
+  ));
+
+  // shows all posts
+  // -1 makes it show them all
+  $query->set( 'posts_per_page', -1 );
+
+  // Deletes distance values
+  //might remove though
+  foreach ( $locations as $location ) {
+    delete_post_meta( $location->ID, 'distance' );
+  }
+
+  // stops if theres no search text lat or long
+  if ( empty($_GET['searchtext']) || empty($_GET['lat']) || empty($_GET['lng']) ) {
+    return;
+  }
+
+  // an array to hold locations in the radius
+  $location_ids_in_radius = array();
+
+  // determines distance for each location
+  // adds as meta and adds if in radius
+  foreach ( $locations as $location ) {
+
+    // Calculate distance between searched values
+		$location_lat = floatval( get_field( 'latitude', $location->ID ) );
+		$location_lng = floatval( get_field( 'longitude', $location->ID ) );
+		$location_lat = deg2rad( $location_lat );
+		$location_lng = deg2rad( $location_lng );
+		$searched_lat = deg2rad( $_GET['lat'] );
+		$searched_lng = deg2rad( $_GET['lng'] );
+		$lat_delta = $location_lat - $searched_lat;
+		$lng_delta = $location_lng - $searched_lng;
+		$angle = 2 * asin( sqrt( pow( sin( $lat_delta / 2 ), 2 ) + cos( $searched_lat ) * cos( $location_lat ) * pow( sin( $lng_delta / 2 ), 2 ) ) );
+		$distance = round( $angle * 3959, 1 );
+
+    // saves distance as meta field
+    // why is there a 2 there? can I just get rid of it?
+    // it's in $unique argument space.
+    // My research shows maybe it should say false?
+    add_post_meta( $location->ID, 'distance', $distance, 2 );
+
+    // adds location to matched if in radius
+    if ( $distance <= $_GET['radius'] ) {
+      $location_ids_in_radius[] = $location->ID;
+    }
+
+  }
+
+  // show no results if empty
+  if ( empty( $location_ids_in_radius ) ) {
+    $location_ids_in_radius[] = 0;
+  }
+
+  //modifying the query
+  // grabs locations in radius
+  // sets what to order by
+  // identifies distance as number
+  // orders by distance ascending
+  $query->set( 'post__in', $location_ids_in_radius );
+  $query->set( 'orderby', 'meta_value_num' );
+  $query->set( 'meta_key', 'distance' );
+  $query->set( 'order', 'ASC' );
+
+}
+add_action('pre_get_posts', 'thnc_pre_get_posts', 10, 1);
 
 
 /*------------------------------------*\
