@@ -187,6 +187,7 @@ add_action( 'init', 'thnc_locations' );
  *
  */
 
+
  // Includes Fields
  require_once('acf-fields.php');
 
@@ -230,27 +231,45 @@ function thnc_pre_get_posts( $query ) {
 	if ( !$query->is_main_query() ) {
 		return;
 	}
+
 	// Quit if Not Locations Archive Page
 	if ( !is_post_type_archive('locations') ) {
 		return;
 	}
+
+  // Removes all posts from start
+	if ( is_post_type_archive('locations') ) {
+		$query->set( 'post__in', none );
+	}
+
 	// Show All Locations
 	$query->set( 'posts_per_page', -1 );
+
 	// Get All Published Locations
 	$locations = get_posts( array(
 		'post_type' => 'locations',
 		'posts_per_page' => -1
 	) );
+
 	// Delete Distance Values
 	foreach ( $locations as $location ) {
 		delete_post_meta( $location->ID, 'distance' );
 	}
+
 	// Quit if Needed Values Aren't Available
 	if ( empty($_GET['searchtext']) || empty($_GET['lat']) || empty($_GET['lng']) ) {
 		return;
 	}
+
 	// Create Array to Hold Matching Location IDs
 	$location_ids_in_radius = array();
+
+  // Create Spanish variable
+	$spanish = fasle;
+	if(isset($_POST['espanol'])) {
+		$spanish = true;
+	}
+
 	// Go Through Each Location
 	foreach ( $locations as $location ) {
 		// Calculate Distance Between Searched Value
@@ -266,11 +285,43 @@ function thnc_pre_get_posts( $query ) {
 		$distance = round( $angle * 3959, 1 );
 		// Save Distance as a Meta Field
 		add_post_meta( $location->ID, 'distance', $distance, 2 );
+
+    // $_GET['type_of_care'] == 'general'
+		// this line of code can grab info out of the URL,
+		// JS can add things to the URL based on
+		// changes to the form.
+		// This is how we'll determine the other variables.
+
+    // Grab the custom field value
+		$care = get_post_meta( $location->ID, 'type_of_care', true );
+    // the result is an array so we call the first item
+		// and turn it into an array then make it all lower
+    $care = (string)$care[0];
+		$care = strtolower($care);
+
+		$spanish = get_post_meta( $location->ID, 'espanol', true );
+		$spanish = $spanish[0];
+		$spanish = strtolower($spanish);
+		$notilde = array ('ñ'=>'n', ' ' => '');
+		$spanish = strtr( $spanish, $notilde );
+
+
 		// Add Location to Matches if In Range
-		if ( $distance <= $_GET['radius'] ) {
-			$location_ids_in_radius[] = $location->ID;
-		}
+		if ( $_GET['spanish'] == 'no' ){
+			if ( $distance <= $_GET['radius'] && $_GET['care'] == $care  ) {
+				$location_ids_in_radius[] = $location->ID;
+			}
+	  }
+
+		if ( $_GET['spanish'] == 'hablaespanol' ){
+			if ( $distance <= $_GET['radius'] && $_GET['care'] == $care && $_GET['spanish'] == $spanish  ) {
+				$location_ids_in_radius[] = $location->ID;
+			}
+	  }
+
+
 	}
+
 	// Show No Results If Empty
 	if ( empty( $location_ids_in_radius ) ) {
 		$location_ids_in_radius[] = 0;
@@ -279,6 +330,7 @@ function thnc_pre_get_posts( $query ) {
 	$query->set( 'post__in', $location_ids_in_radius );
 	$query->set( 'orderby', 'meta_value_num' );
 	$query->set( 'meta_key', 'distance' );
+	$query->set( 'meta_key', 'type_of_care' );
 	$query->set( 'order', 'ASC' );
 }
 add_action('pre_get_posts', 'thnc_pre_get_posts', 10, 1);

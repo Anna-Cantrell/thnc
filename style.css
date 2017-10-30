@@ -211,10 +211,11 @@ header {
 .location-report {
 	float: right;
 }
-.no-results h2 {
-	margin: 0;
-
+.locations-no-results {
+	display: none;
+	font-weight: 500;
 }
+
 
 
 /*------------------------------------*\

@@ -42,6 +42,9 @@ get_header(); ?>
           <option value="100">
             <?php echo __( '100 mi', 'transhealthnc' ); ?>
           </option>
+					<option value="200">
+            <?php echo __( '200 mi', 'transhealthnc' ); ?>
+          </option>
         </select>
         <select class="type-of-care">
           <option value="general">
@@ -100,7 +103,7 @@ get_header(); ?>
 												fax: <?php the_field( 'fax_number' ); ?><br>
 									<?php endif; ?>
 									<?php if ( get_field( 'email' ) ) : ?>
-												<?php the_field( 'email' ); ?>
+												<?php the_field( 'email' ); ?><br>
 									<?php endif; ?>
 									<?php if ( get_field( 'website' ) ) : ?>
 											<a class="location-website" href="<?php the_field( 'website' ); ?>" target="_blank">
@@ -141,7 +144,7 @@ get_header(); ?>
 		<?php else: ?>
 
 			<div class="locations-no-results">
-				<?php the_field( 'no_results_message', 13 ); ?>
+				<h2><?php the_field( 'no_results_message', 13 ); ?></h2>
 			</div>
 
 		<?php endif; ?>
