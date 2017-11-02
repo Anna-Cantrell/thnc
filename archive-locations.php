@@ -2,32 +2,15 @@
 /**
  * Main Template
  *
- * This file is the main template for the WordPress theme. It displays a list of
- * posts in the main content area.
- *
- * @package WordPress
- * @subpackage EyeCare_Partners
- * @since EyeCare Partners 1.0.0
+ * This file is the main template for the WordPress theme.
  */
 get_header(); ?>
-
-<?php if ( get_field( 'hero_image', 'option' ) ) : ?>
-	<div class="hero" style="background-image: url(<?php the_field( 'hero_image', 'option' ); ?>);">
-<?php else: ?>
-	<div class="hero">
-<?php endif; ?>
-	<div class="wrapper">
-		<h1 class="hero-title">
-			<?php the_field( 'location_headline', 'option' ); ?>
-		</h1>
-	</div>
-</div>
 
 <!-- contains the search bar -->
 <div class="search-holder">
   <div class="wrapper">
 
-    <form class="locations-filters">
+    <form class="locations-filters" name="filters">
         <input class="locations-search" type="text" placeholder="<?php the_field('location_field_label', 13); ?>">
         <select class="locations-radius">
           <option value="10">
@@ -46,7 +29,7 @@ get_header(); ?>
             <?php echo __( '200 mi', 'transhealthnc' ); ?>
           </option>
         </select>
-        <select class="type-of-care">
+        <select class="type-of-care" name="care">
           <option value="general">
             <?php echo __('general', 'transhealthnc'); ?>
           </option>
@@ -61,12 +44,13 @@ get_header(); ?>
           </option>
         </select>
         <label for="espanol">Habla espa&ntilde;ol</label>
-        <input type="checkbox" id="espanol" name="espanol" value="espanol">
+        <input type="checkbox" id="espanol" name="espanol" value="espanol" onchange='handleChange(this);'>
         <input class="locations-submit" type="submit" value="<?php the_field( 'search_button_label', 13 ); ?>">
     </form>
 
   </div>
 </div> <!-- end search holder -->
+
 
 
 <div class="locations-wrapper">

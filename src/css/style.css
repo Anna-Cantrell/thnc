@@ -27,8 +27,8 @@ light charcoal: #dadada
 *,
 *:after,
 *:before {
-	-webkit-box-sizing:border-box;
-	        box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
 	-webkit-font-smoothing:antialiased;
 	font-smoothing:antialiased;
 	text-rendering:optimizeLegibility;
@@ -187,11 +187,10 @@ header {
 	width: 22%;
 	display: inline-block;
 	margin: 20px 1%;
-	background-color: rgba(255, 255, 255, .94);
+	background-color: rgba(255,255,255, 0.94);
   padding: 10px;
 	vertical-align: top;
-	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
-	        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .location-care-type {
 	font-weight: 500;
@@ -270,12 +269,6 @@ header {
 /*------------------------------------*\
     MISC
 \*------------------------------------*/
-
-::-moz-selection {
-	background:#04A4CC;
-	color:#FFF;
-	text-shadow:none;
-}
 
 ::selection {
 	background:#04A4CC;
@@ -375,8 +368,7 @@ a img.aligncenter {
 	* {
 		background:transparent !important;
 		color:#000 !important;
-		-webkit-box-shadow:none !important;
-		        box-shadow:none !important;
+		box-shadow:none !important;
 		text-shadow:none !important;
 	}
 	a,

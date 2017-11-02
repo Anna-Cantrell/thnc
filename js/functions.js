@@ -280,6 +280,23 @@
 		}
 
 
+		$('input[name=espanol]').change(function(){
+		    if($(this).is(':checked')) {
+					document.filters.care.options.length=0;
+					document.filters.care.options[0]=new Option("general", "general", true, false);
+					document.filters.care.options[1]=new Option("hormonas", "hormonal", false, false);
+					document.filters.care.options[2]=new Option("salud mental", "mental health", false, false);
+					document.filters.care.options[3]=new Option("cirugía", "surgical", false, false);
+		    } else {
+					document.filters.care.options.length=0;
+					document.filters.care.options[0]=new Option("general", "general", true, false);
+					document.filters.care.options[1]=new Option("hormonal", "hormonal", false, false);
+					document.filters.care.options[2]=new Option("mental health", "mental health", false, false);
+					document.filters.care.options[3]=new Option("surgical", "surgical", false, false);
+				}
+		});
+
+
 		// When User Searches
 		$('.locations-filters').submit( function (event) {
 
@@ -318,6 +335,7 @@
 			if ( document.getElementById("espanol").checked ) {
 				spanish = 'hablaespanol';
 			}
+
 
 			// Geocode Search and Change URL
 			var geocoder = new google.maps.Geocoder();
@@ -371,6 +389,13 @@
 				var spanish = searchParameters.split('spanish=', 2)[1].split('&', 1)[0];
 				if ( spanish == 'hablaespanol' ) {
 					document.getElementById('espanol').checked = true;
+					document.filters.care.options.length=0;
+					document.filters.care.options[0]=new Option("general", "general", true, false);
+					document.filters.care.options[1]=new Option("hormonas", "hormonal", false, false);
+					document.filters.care.options[2]=new Option("salud mental", "mental health", false, false);
+					document.filters.care.options[3]=new Option("cirugía", "surgical", false, false);
+					var care = searchParameters.split('care=', 2)[1].split('&', 1)[0].replace('%20', ' ');
+					$('.type-of-care').val(care);
 				}
 			}
 
@@ -431,6 +456,9 @@
 			map.fitBounds(bounds);
 		});
 
-	} );
+
+
+
+	} ); // wrapper
 
 } )( jQuery );
