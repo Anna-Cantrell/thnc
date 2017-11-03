@@ -12,7 +12,8 @@ get_header(); ?>
 
     <form class="locations-filters" name="filters">
         <input class="locations-search" type="text" placeholder="<?php the_field('location_field_label', 13); ?>">
-        <select class="locations-radius">
+
+				<select class="locations-radius">
           <option value="10">
             <?php echo __( '10 mi', 'transhealthnc' ); ?>
           </option>
@@ -29,6 +30,7 @@ get_header(); ?>
             <?php echo __( '200 mi', 'transhealthnc' ); ?>
           </option>
         </select>
+
         <select class="type-of-care" name="care">
           <option value="general">
             <?php echo __('general', 'transhealthnc'); ?>
@@ -43,8 +45,10 @@ get_header(); ?>
             <?php echo __('surgical', 'transhealthnc'); ?>
           </option>
         </select>
-        <label for="espanol">Habla espa&ntilde;ol</label>
-        <input type="checkbox" id="espanol" name="espanol" value="espanol" onchange='handleChange(this);'>
+				<div class="spanish-block">
+	        <label for="espanol">Habla espa&ntilde;ol</label>
+	        <input type="checkbox" id="espanol" name="espanol" value="espanol">
+			  </div>
         <input class="locations-submit" type="submit" value="<?php the_field( 'search_button_label', 13 ); ?>">
     </form>
 

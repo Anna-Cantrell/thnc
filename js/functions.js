@@ -407,7 +407,10 @@
 				zoom: 7,
 				maxZoom: 15,
 				center: {lat: 35.197, lng: -80.044},
-				styles: mapStyle
+				styles: mapStyle,
+				mapTypeControl: false,
+				streetViewControl: false,
+				fullscreenControl: false
 			});
 			map.fitBounds(bounds);
 			alert('nope');
@@ -428,7 +431,10 @@
 		var map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 7,
 			maxZoom: 15,
-			styles: mapStyle
+			styles: mapStyle,
+			mapTypeControl: false,
+			streetViewControl: false,
+			fullscreenControl: false
 		});
 
 		// Add Pins and Auto Zoom Map
