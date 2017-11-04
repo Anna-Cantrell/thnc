@@ -214,6 +214,9 @@ input[type=submit] {
 	z-index: 0;
 }
 
+/* -------------------
+   Locations
+---------------------*/
 .locations-wrapper {
 	position: absolute;
 	width: 100%;

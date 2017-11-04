@@ -341,7 +341,7 @@
 			var geocoder = new google.maps.Geocoder();
 			geocoder.geocode( {address:searchText}, function(results, status) {
 				if ( status == google.maps.GeocoderStatus.OK ) {
-					locationsURL += '?searchtext=' + searchText;
+					locationsURL  = '?searchtext=' + searchText;
 					locationsURL += '&radius=' + searchRadius;
 					locationsURL += '&lat=' + results[0].geometry.location.lat();
 					locationsURL += '&lng=' + results[0].geometry.location.lng();
@@ -413,7 +413,6 @@
 				fullscreenControl: false
 			});
 			map.fitBounds(bounds);
-			alert('nope');
 			$('.locations-no-results').css('display', 'block');
 		}
 
@@ -440,6 +439,7 @@
 		// Add Pins and Auto Zoom Map
 		var bounds = new google.maps.LatLngBounds();
 		var infowindow = new google.maps.InfoWindow();
+		var locationText = searchText + ' nc';
 		for (i = 0; i < locationsData.length; i++) {
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(locationsData[i][1], locationsData[i][2]),
@@ -454,9 +454,18 @@
 			})(marker, i));
 		}
 
-		map.fitBounds(bounds);
+		if (locationsData.length > 0) {
+			var geocoder = new google.maps.Geocoder();
+			geocoder.geocode( {address:locationText}, function(results, status) {
+				if ( status == google.maps.GeocoderStatus.OK ) {
 
+				}
+				bounds.extend(results[0].geometry.location);
+				map.fitBounds(bounds);
+			});
+		}
 
+    map.fitBounds(bounds);
 		// Adjust Map When Screen Is Resized
 		$(window).resize(function(){
 			map.fitBounds(bounds);
