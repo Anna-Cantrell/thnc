@@ -238,9 +238,9 @@ function thnc_pre_get_posts( $query ) {
 	}
 
   // Removes all posts from start
-	// if ( is_post_type_archive('locations') ) {
-	// 	$query->set( 'post__in', none );
-	// }
+	if ( is_post_type_archive('locations') ) {
+		$query->set( 'post__in', none );
+	}
 
 	// Show All Locations
 	$query->set( 'posts_per_page', -1 );
