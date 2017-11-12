@@ -98,7 +98,7 @@ add_action( 'wp_enqueue_scripts', 'thnc_styles' );
  */
 function thnc_scripts() {
 	// Load Main Script
-	wp_enqueue_script( 'google-maps-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBN52rMtw3s6Uh4L5st0CIIKaCOOg1xY7Y', '', '', true);
+	wp_enqueue_script( 'google-maps-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCv0BDuAHADqpfNIsMT4hMv36RQtqoG8hg', '', '', true);
 	wp_enqueue_script( 'thnc-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery', 'google-maps-api' ), '1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'thnc_scripts' );
@@ -212,7 +212,7 @@ function thnc_acf_call_number() {
 }
 // Add Google Maps API Key
 function thnc_acf_google_map_api( $api ){
-	$api['key'] = 'AIzaSyBN52rMtw3s6Uh4L5st0CIIKaCOOg1xY7Y';
+	$api['key'] = 'AIzaSyCv0BDuAHADqpfNIsMT4hMv36RQtqoG8hg';
 	return $api;
 }
 add_filter('acf/fields/google_map/api', 'thnc_acf_google_map_api');
@@ -238,9 +238,9 @@ function thnc_pre_get_posts( $query ) {
 	}
 
   // Removes all posts from start
-	if ( is_post_type_archive('locations') ) {
-		$query->set( 'post__in', none );
-	}
+//	if ( is_post_type_archive('locations') ) {
+//		$query->set( 'post__in', none );
+//	}
 
 	// Show All Locations
 	$query->set( 'posts_per_page', -1 );
@@ -296,8 +296,16 @@ function thnc_pre_get_posts( $query ) {
 		$care = get_post_meta( $location->ID, 'type_of_care', true );
     // the result is an array so we call the first item
 		// and turn it into an array then make it all lower
-    $care = (string)$care[0];
+        $care1 = (string)$care[0];
+		$care2 = (string)$care[1];
+		$care3 = (string)$care[2];
+		$care4 = (string)$care[3];
+		
 		$care = strtolower($care);
+		$care1 = strtolower($care1);
+		$care2 = strtolower($care2);
+		$care3 = strtolower($care3);
+		$care4 = strtolower($care4);
 
 		$spanish = get_post_meta( $location->ID, 'espanol', true );
 		$spanish = $spanish[0];
@@ -307,17 +315,25 @@ function thnc_pre_get_posts( $query ) {
 
 
 		// Add Location to Matches if In Range
-		if ( $_GET['spanish'] == 'no' ){
-			if ( $distance <= $_GET['radius'] && $_GET['care'] == $care  ) {
+		if ( $_GET['spanish'] == 'no' ) {
+			if ( $distance <= $_GET['radius']) {
+				
+				if ($_GET['care'] == $care1 || $_GET['care'] == $care2 || $_GET['care'] == $care3 || $_GET['care'] == $care4 ) {
 				$location_ids_in_radius[] = $location->ID;
+			    }
+				
 			}
-	  }
+	    }
 
 		if ( $_GET['spanish'] == 'hablaespanol' ){
-			if ( $distance <= $_GET['radius'] && $_GET['care'] == $care && $_GET['spanish'] == $spanish  ) {
+			if ( $distance <= $_GET['radius'] && $_GET['spanish'] == $spanish) {
+				
+				if ($_GET['care'] == $care1 || $_GET['care'] == $care2 || $_GET['care'] == $care3 || $_GET['care'] == $care4 ) {
 				$location_ids_in_radius[] = $location->ID;
+			    }
+				
 			}
-	  }
+	    }
 
 
 	}

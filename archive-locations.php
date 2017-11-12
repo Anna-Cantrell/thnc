@@ -11,7 +11,7 @@ get_header(); ?>
   <div class="wrapper">
 
     <form class="locations-filters" name="filters">
-        <input class="locations-search" type="text" placeholder="<?php the_field('location_field_label', 13); ?>">
+        <input class="locations-search" type="text" placeholder="<?php the_field('location_field_label', 23); ?>">
 
 				<select class="locations-radius">
           <option value="10">
@@ -49,7 +49,7 @@ get_header(); ?>
 	        <label for="espanol">Habla espa&ntilde;ol</label>
 	        <input type="checkbox" id="espanol" name="espanol" value="espanol">
 			  </div>
-        <input class="locations-submit" type="submit" value="<?php the_field( 'search_button_label', 13 ); ?>">
+        <input class="locations-submit" type="submit" value="<?php the_field( 'search_button_label', 23 ); ?>">
     </form>
 
   </div>
@@ -95,12 +95,7 @@ get_header(); ?>
 									<?php endif; ?>
 									<?php if ( get_field( 'website' ) ) : ?>
 											<a class="location-website" href="<?php the_field( 'website' ); ?>" target="_blank">
-												<?php
-													$subject = get_field( 'website' ) ;
-	                        $search = 'http://' ;
-	                        $trimmed = str_replace($search, '', $subject) ;
-	                        echo $trimmed ;
-												?>
+												Website
 											</a>
 									<?php endif; ?>
 							  </p>
@@ -132,7 +127,7 @@ get_header(); ?>
 		<?php else: ?>
 
 			<div class="locations-no-results">
-				<h2><?php the_field( 'no_results_message', 13 ); ?></h2>
+				<h2><?php the_field( 'no_results_message', 23 ); ?></h2>
 			</div>
 
 		<?php endif; ?>
