@@ -436,11 +436,14 @@
 			fullscreenControl: false
 		});
 
+
 		// Add Pins and Auto Zoom Map
 		var bounds = new google.maps.LatLngBounds();
 		var infowindow = new google.maps.InfoWindow();
 		var locationText = searchText + ' nc';
+
 		for (i = 0; i < locationsData.length; i++) {
+			var card = $('.location');
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(locationsData[i][1], locationsData[i][2]),
 				map: map
@@ -453,6 +456,7 @@
 				}
 			})(marker, i));
 		}
+
 
 		if (locationsData.length > 0) {
 			var geocoder = new google.maps.Geocoder();

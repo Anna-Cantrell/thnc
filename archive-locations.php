@@ -50,18 +50,25 @@ get_header(); ?>
 	        <input type="checkbox" id="espanol" name="espanol" value="espanol">
 			  </div>
         <input class="locations-submit" type="submit" value="<?php the_field( 'search_button_label', 23 ); ?>">
+        <div class="locations-no-results">
+          <h2><?php the_field( 'no_results_message', 23 ); ?></h2>
+        </div>
     </form>
+
 
   </div>
 </div> <!-- end search holder -->
 
+<!-- MAP -->
+<div class="map-holder">
+	<div class="locations-map" id="map"></div>
+</div>
 
 
+<!-- LOCATIONS -->
 <div class="locations-wrapper">
 	<div class="wrapper">
 		<?php if ( have_posts() ) : ?>
-
-
 
 			<div class="locations">
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -110,14 +117,16 @@ get_header(); ?>
 									</a>
 								</p>
 
-								<p class="location-espanol">
-		              <?php if ( !empty(the_field( 'espanol' ))) : ?>
-		                  <?php the_field( 'espanol' );  ?>
-		              <?php endif; ?>
-		            </p>
-		            <p class="location-report">
-		              report
-		            </p>
+                <div class="interact-options">
+                  <p class="location-espanol">
+  		              <?php if ( !empty(the_field( 'espanol' ))) : ?>
+  		                  <?php the_field( 'espanol' );  ?>
+  		              <?php endif; ?>
+  		            </p>
+  		            <p class="location-report">
+  		              report
+  		            </p>
+              </div>
 
 							</div>
 						</div>
@@ -125,16 +134,9 @@ get_header(); ?>
 			</div>
 
 		<?php else: ?>
-
-			<div class="locations-no-results">
-				<h2><?php the_field( 'no_results_message', 23 ); ?></h2>
-			</div>
-
 		<?php endif; ?>
 	</div>
 </div>
-<div class="map-holder">
-	<div class="locations-map" id="map"></div>
-</div>
+
 
 <?php get_footer(); ?>
