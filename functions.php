@@ -83,6 +83,9 @@
 **/
 
 function thnc_styles() {
+
+  // Load bootstrap
+	wp_enqueue_style( 'bootstrap_css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' );
 	// Load Main Stylesheet
 	wp_enqueue_style( 'thnc-style', get_stylesheet_uri() );
 }

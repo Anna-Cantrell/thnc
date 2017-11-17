@@ -15,10 +15,10 @@
 
 <footer>
   <div class='wrapper'>
-    <ul class='nav'>
+    <ul class='foot-nav'>
       <li>Learn more</li>
       <li><a href="http://transhealthnc.com/">Submit a provider</a></li>
-      <li class='connect'>Connect
+      <li class='connect'>
         <a href="https://twitter.com/transhealthNC" target="_blank">
           <div class='social-button twitter-social'></div>
         </a>

@@ -186,6 +186,7 @@ if ( function_exists('acf_add_local_field_group') ) {
 				'multiple' => 0,
 				'allow_archives' => 1,
 			),
+
 			array (
 				'key' => 'field_588b5fe1be86f',
 				'label' => 'Google Tag Manager ID',
@@ -243,6 +244,8 @@ if ( function_exists('acf_add_local_field_group') ) {
 		'active' => 1,
 		'description' => '',
 	));
+
+
 	acf_add_local_field_group(array (
 		'key' => 'group_5887c43cbf43b',
 		'title' => 'Landing Page Options',
@@ -1035,74 +1038,9 @@ if ( function_exists('acf_add_local_field_group') ) {
 		'active' => 1,
 		'description' => '',
 	));
-	acf_add_local_field_group(array (
-		'key' => 'group_58c161030eafd',
-		'title' => 'LASIK Locations Template Options',
-		'fields' => array (
-			array (
-				'key' => 'field_58c1610311d37',
-				'label' => 'Hero Image',
-				'name' => 'hero_image',
-				'type' => 'image',
-				'instructions' => '',
-				'required' => 1,
-				'conditional_logic' => 0,
-				'wrapper' => array (
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'return_format' => 'url',
-				'preview_size' => 'full',
-				'library' => 'all',
-				'min_width' => 1280,
-				'min_height' => 550,
-				'min_size' => '',
-				'max_width' => 1280,
-				'max_height' => 550,
-				'max_size' => '',
-				'mime_types' => 'jpg',
-			),
-			array (
-				'key' => 'field_58cc033c230ba',
-				'label' => 'Gravity Form ID',
-				'name' => 'gravity_form_id',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array (
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => 12,
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'page_template',
-					'operator' => '==',
-					'value' => 'page-lasik.php',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => array (
-			0 => 'the_content',
-		),
-		'active' => 1,
-		'description' => '',
-	));
+
+
+
 	acf_add_local_field_group(array (
 		'key' => 'group_5888be03da0b8',
 		'title' => 'Location Options',
@@ -1476,43 +1414,12 @@ if ( function_exists('acf_add_local_field_group') ) {
 	acf_add_local_field_group(array (
 		'key' => 'group_5887bf8dd6a67',
 		'title' => 'Page Options',
-		'fields' => array (
-			array (
-				'key' => 'field_5887bf959c0fd',
-				'label' => 'Hero Image',
-				'name' => 'hero_image',
-				'type' => 'image',
-				'instructions' => '',
-				'required' => 1,
-				'conditional_logic' => 0,
-				'wrapper' => array (
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'return_format' => 'url',
-				'preview_size' => 'full',
-				'library' => 'all',
-				'min_width' => 1280,
-				'min_height' => 550,
-				'min_size' => '',
-				'max_width' => 1280,
-				'max_height' => 550,
-				'max_size' => '',
-				'mime_types' => 'jpg',
-			),
-		),
 		'location' => array (
 			array (
 				array (
 					'param' => 'page_template',
 					'operator' => '!=',
 					'value' => 'page-landing.php',
-				),
-				array (
-					'param' => 'page_template',
-					'operator' => '!=',
-					'value' => 'page-lasik.php',
 				),
 				array (
 					'param' => 'post_type',

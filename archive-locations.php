@@ -46,16 +46,14 @@ get_header(); ?>
           </option>
         </select>
 				<div class="spanish-block">
-	        <label for="espanol">Habla espa&ntilde;ol</label>
+	        <label for="espanol"><span class="habla">Habla espa&ntilde;ol</span></label>
 	        <input type="checkbox" id="espanol" name="espanol" value="espanol">
 			  </div>
         <input class="locations-submit" type="submit" value="<?php the_field( 'search_button_label', 23 ); ?>">
         <div class="locations-no-results">
-          <h2><?php the_field( 'no_results_message', 23 ); ?></h2>
+          <h4><?php the_field( 'no_results_message', 23 ); ?></h4>
         </div>
     </form>
-
-
   </div>
 </div> <!-- end search holder -->
 
@@ -77,14 +75,15 @@ get_header(); ?>
 
 								<h2 class="location-title">
 									<?php the_title(); ?>
+                  <?php if ( !empty( get_post_meta( get_the_ID(), 'distance' ) ) ) : ?>
+  									<span class="location-distance">
+  										<?php echo get_post_meta( get_the_ID(), 'distance' )[0]; ?>
+  										<?php echo __( 'mi', 'transhealthnc' ); ?>
+  									</span>
+  								<?php endif; ?>
 								</h2>
 
-								<?php if ( !empty( get_post_meta( get_the_ID(), 'distance' ) ) ) : ?>
-									<p class="location-distance">
-										<?php echo get_post_meta( get_the_ID(), 'distance' )[0]; ?>
-										<?php echo __( 'mi', 'transhealthnc' ); ?>
-									</p>
-								<?php endif; ?>
+
 
 								<p class="location-care-type">
                   <?php the_field( 'type_of_care' ); ?><br>
@@ -124,7 +123,7 @@ get_header(); ?>
   		              <?php endif; ?>
   		            </p>
   		            <p class="location-report">
-  		              report
+
   		            </p>
               </div>
 
