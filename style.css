@@ -303,7 +303,9 @@ input[type=submit] {
 .hero {
   position: relative;
 	width: 100%;
+	height: auto;
 	text-align: center;
+	background-color: #464646;
 }
 .background-color {
 	position: absolute;
@@ -488,16 +490,25 @@ input[type=submit] {
 	margin: 140px auto;
 }
 .card1:hover {
-	-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
-	        box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23)
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+	        box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23)
 }
 .card1:hover .card-title {
 	color: #E198FD;
 }
 .card2:hover {
-	-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
-	        box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+	        box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
 }
+.card3:hover {
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+	        box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23)
+}
+.card3:hover .card-title {
+	color: #E198FD;
+}
+
+
 
 .contact-title p {
 	font-size: 2em;

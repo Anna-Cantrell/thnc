@@ -1,6 +1,6 @@
 <?php
 /**
- * Footer Template
+ * Footer sub Template
  *
  * This file is the footer template for the WordPress theme. It displays the
  * bottom part of the HTML document.
@@ -13,7 +13,8 @@
 
 </div>
 
-<footer>
+<div class="footer">
+
   <div class='wrapper'>
     <ul class='foot-nav'>
       <li><a href="http://transhealthnc.com/learn-more">Learn more</a></li>
@@ -28,7 +29,7 @@
       </li>
     </ul>
   </div>
-</footer>
 
+</div>
 </body>
 </html>

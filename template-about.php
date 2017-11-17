@@ -8,9 +8,10 @@
 
 <section class="callout">
 	<p class="callout-copy">
-	transhealthNC helps connect trans people in
-North Carolina with quality and experienced
-healthcare near them.</p>
+		<?php if ( get_field( 'callout' ) ) : ?>
+					<?php the_field( 'callout' ); ?><br>
+		<?php endif; ?>
+	</p>
 </section>
 
 <section class="about-content">
@@ -24,14 +25,9 @@ healthcare near them.</p>
 		</div>
 
 		<div class="content-body col-md-7">
-			<p>Our database was built from the recommendations of NC trans community members as well as the incredible work of LGBT leaders across the state. Every submission has been independently verified to ensure commitment to the NC trans community and adherence to transgender standards of care.
-				<br><br>
-				Learn more about the existing trans healthcare resources:</p>
-				<ul>
-					<li>Link here</li>
-					<li>Link here</li>
-					<li>Link here</li>
-				</ul>
+			<?php if ( get_field( 'about_copy' ) ) : ?>
+						<?php the_field( 'about_copy' ); ?><br>
+			<?php endif; ?>
 		</div>
 
   </div>
@@ -39,7 +35,11 @@ healthcare near them.</p>
 
 <section class="helping">
 	<div class="helping-title">
-		<p>How you can help</p>
+		<p>
+			<?php if ( get_field( 'help_headline' ) ) : ?>
+						<?php the_field( 'help_headline' ); ?><br>
+			<?php endif; ?>
+		</p>
 	</div>
 
 	<div class="help-selections row">
@@ -49,11 +49,14 @@ healthcare near them.</p>
 			<a href="http://transhealthnc.com/form">
 				<div class="help-card card1">
 					<h3 class="card-title">
-						  Submit a provider
+						<?php if ( get_field( 'card1_title' ) ) : ?>
+									<?php the_field( 'card1_title' ); ?><br>
+						<?php endif; ?>
 					</h3>
 					<p class="card-copy">
-						Have you had a good experience with a health care provider in NC?<br>
-	Let us know!
+						<?php if ( get_field( 'card1-body' ) ) : ?>
+							<?php the_field( 'card1-body' ); ?>
+						<?php endif; ?>
 					</p>
 				</div>
 		  </a>
@@ -64,10 +67,14 @@ healthcare near them.</p>
 
 			<div class="help-card card2">
 				<h3 class="card-title">
-						share our page
+					<?php if ( get_field( 'card2-title' ) ) : ?>
+						<?php the_field( 'card2-title' ); ?><br>
+					<?php endif; ?>
 				</h3>
 				<p class="card-copy">
-					Let your friends know about transhealthNC by sharing our page on social media.
+					<?php if ( get_field( 'card2_body' ) ) : ?>
+						<?php the_field( 'card2_body' ); ?>
+					<?php endif; ?>
 				</p>
 				<div class="help-social">
 					<a href="https://www.facebook.com/transhealthnc/" target="_blank">
@@ -84,10 +91,14 @@ healthcare near them.</p>
 		<div class="col-sm-4">
 			<div class="help-card card3">
 				<h3 class="card-title">
-					donate
+					<?php if ( get_field( 'card3_title' ) ) : ?>
+						<?php the_field( 'card3_title' ); ?><br>
+					<?php endif; ?>
 				</h3>
 				<p class="card-copy">
-					Want to help keep transhealthNC running? Donate to help promote and maintain the resource.
+					<?php if ( get_field( 'card3_body' ) ) : ?>
+						<?php the_field( 'card3_body' ); ?>
+					<?php endif; ?>
 				</p>
 			</div>
 		</div>
@@ -101,42 +112,28 @@ healthcare near them.</p>
 	<div class="contact">
 
 		<div class="contact-title">
-			<p>Contact us</p>
+			<p>
+				<?php if ( get_field( 'contact_title' ) ) : ?>
+					<?php the_field( 'contact_title' ); ?>
+				<?php endif; ?>
+			</p>
 		</div>
     <div class="row">
 			<div class="col-md-10 col-md-offset-1 contact-body">
-				Have questions, comments, concerns, or an issue with a provider? Contact us! We encourage you to reach out and help us make this resource as good as it can be. Please feel welcome to send us an email at any time.<br><br>
-
+				<?php if ( get_field( 'contact_body' ) ) : ?>
+					<?php the_field( 'contact_body' ); ?>
+				<?php endif; ?>
+				<br><br>
 			</div>
 	  </div>
 
 		<div class='contact-email'>
-			transhealthnc@gmail.com
+			<?php if ( get_field( 'email_address' ) ) : ?>
+				<?php the_field( 'email_address' ); ?>
+			<?php endif; ?>
 		</div>
 
 	</div>
 </section>
 
-
-<?php wp_footer(); ?>
-
-</div>
-
-<div class="footer">
-
-  <div class='wrapper'>
-    <ul class='foot-nav'>
-      <li>Learn more</li>
-      <li><a href="http://transhealthnc.com/">Submit a provider</a></li>
-      <li class='connect'>
-        <a href="https://twitter.com/transhealthNC" target="_blank">
-          <div class='social-button twitter-social'></div>
-        </a>
-        <a href="https://www.facebook.com/transhealthnc/" target="_blank">
-          <div class='social-button facebook-social'></div>
-        </a>
-      </li>
-    </ul>
-  </div>
-
-</div>
+<?php get_footer(sub); ?>

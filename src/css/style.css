@@ -10,6 +10,7 @@
     MAIN
 \*------------------------------------*/
 :root {
+
 	--pink: #FD65BC;
 	--blue: #59E7FF;
 	--purple: #E198FD;
@@ -314,7 +315,9 @@ input[type=submit] {
 .hero {
   position: relative;
 	width: 100%;
+	height: auto;
 	text-align: center;
+	background-color: var(--charcoal);
 }
 .background-color {
 	position: absolute;
@@ -490,15 +493,24 @@ input[type=submit] {
 	margin: 140px auto;
 }
 .card1:hover {
-	box-shadow: var(--depth2);
+	box-shadow: var(--depth1);
 
 		& .card-title {
 			color: var(--purple);
 		}
 }
 .card2:hover {
-	box-shadow: var(--depth2);
+	box-shadow: var(--depth1);
 }
+.card3:hover {
+	box-shadow: var(--depth1);
+
+		& .card-title {
+			color: var(--purple);
+		}
+}
+
+
 
 .contact-title p {
 	font-size: 2em;
