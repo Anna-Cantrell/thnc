@@ -3,7 +3,7 @@
 
 <section class="hero">
 	<!-- <div class="background-color"></div> -->
-	<img class="hero-bg" src="<?php echo get_template_directory_uri(); ?>/img/thnc-hero1.png">
+	<img src="<?php echo get_template_directory_uri(); ?>/img/THNC-hero1.png" class="hero-bg" />
 </section>
 
 <section class="callout">

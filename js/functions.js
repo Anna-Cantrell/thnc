@@ -446,6 +446,7 @@
 			var card = $('.location');
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(locationsData[i][1], locationsData[i][2]),
+				icon: 'http://transhealthnc.com/wp-content/uploads/2017/11/thnc-marker-purple-flat.png',
 				map: map
 			});
 			bounds.extend(marker.position);
