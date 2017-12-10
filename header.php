@@ -52,9 +52,9 @@
 			<header class="header clear" role="banner">
 					<!-- logo -->
 					<div class="logo-holder">
-						<!-- <a href="<?php echo home_url(); ?>"> -->
+						<a href="<?php echo home_url(); ?>">
 							<img src="<?php echo get_template_directory_uri(); ?>/img/THNC-header-logo-shadow.png" alt="Logo" class="logo-img">
-						<!-- </a> -->
+						</a>
 					</div>
 					<!-- /logo -->
 			</header>

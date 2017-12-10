@@ -89,18 +89,21 @@
 		</div>
 
 		<div class="col-sm-4">
-			<div class="help-card card3">
-				<h3 class="card-title">
-					<?php if ( get_field( 'card3_title' ) ) : ?>
-						<?php the_field( 'card3_title' ); ?><br>
-					<?php endif; ?>
-				</h3>
-				<p class="card-copy">
-					<?php if ( get_field( 'card3_body' ) ) : ?>
-						<?php the_field( 'card3_body' ); ?>
-					<?php endif; ?>
-				</p>
-			</div>
+			<a href="https://fundly.com/transhealthnc" target="_blank">
+				<div class="help-card card3">
+					<h3 class="card-title">
+						<?php if ( get_field( 'card3_title' ) ) : ?>
+							<?php the_field( 'card3_title' ); ?><br>
+						<?php endif; ?>
+					</h3>
+					<p class="card-copy">
+						<?php if ( get_field( 'card3_body' ) ) : ?>
+							<?php the_field( 'card3_body' ); ?>
+						<?php endif; ?>
+					</p>
+				</div>
+			</a>
+
 		</div>
 
 	</div>

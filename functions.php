@@ -227,6 +227,50 @@ add_filter('acf/fields/google_map/api', 'thnc_acf_google_map_api');
  * URL parameters and modifying the page's WP Query object.
  */
 function thnc_pre_get_posts( $query ) {
+
+
+
+//////
+// forces locations archive as home Page
+//////
+
+
+if ( is_admin() || ! $query->is_main_query() ) {
+    	return;
+    }
+
+    global $wp;
+    $front = false;
+
+	// If the latest posts are showing on the home page
+    if ( ( is_home() && empty( $wp->query_string ) ) ) {
+    	$front = true;
+    }
+
+	// If a static page is set as the home page
+    if ( ( $query->get( 'page_id' ) == get_option( 'page_on_front' ) && get_option( 'page_on_front' ) ) || empty( $wp->query_string ) ) {
+    	$front = true;
+    }
+
+    if ( $front ) :
+
+        $query->set( 'post_type', 'locations' );
+        $query->set( 'page_id', '' );
+
+        // Set properties to match an archive
+        $query->is_page = 0;
+        $query->is_singular = 0;
+        $query->is_post_type_archive = 1;
+        $query->is_archive = 1;
+
+    endif;
+
+
+//////
+// end home page force
+//////
+
+
 	// Quit if Admin Page
 	if ( is_admin() ) {
 		return;
@@ -242,9 +286,9 @@ function thnc_pre_get_posts( $query ) {
 	}
 
   // Removes all posts from start
-//	if ( is_post_type_archive('locations') ) {
-//		$query->set( 'post__in', none );
-//	}
+	if ( is_post_type_archive('locations') ) {
+		$query->set( 'post__in', none );
+	}
 
 	// Show All Locations
 	$query->set( 'posts_per_page', -1 );
@@ -350,7 +394,6 @@ function thnc_pre_get_posts( $query ) {
 	$query->set( 'post__in', $location_ids_in_radius );
 	$query->set( 'orderby', 'meta_value_num' );
 	$query->set( 'meta_key', 'distance' );
-	$query->set( 'meta_key', 'type_of_care' );
 	$query->set( 'order', 'ASC' );
 }
 add_action('pre_get_posts', 'thnc_pre_get_posts', 10, 1);

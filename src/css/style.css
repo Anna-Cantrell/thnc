@@ -622,7 +622,7 @@ footer a {
 \*------------------------------------*/
 
 
-@media only screen and (max-width:728px) {
+@media only screen and (max-width:800px) {
 	.logo-holder {
 		margin-top: -5px;
 		width: 90px;
@@ -634,12 +634,19 @@ footer a {
 		margin: 20px 1.09%;
 	}
 	.search-holder {
-		margin-top: 60px;
+		margin-top: 50px;
 		padding-top: 20px;
-			/*background: aliceblue;*/
+		/*background: aliceblue;*/
+		text-align: right;
 	}
 	.callout-copy {
 		padding: 2em 40px 2em 40px;
+	}
+	input[type='submit'] {
+		margin-right: 10px;
+	}
+	input[type="text"], select, input[type='submit'] {
+		margin-top: 10px;
 	}
 }
 @media only screen and (max-width:450px) {

@@ -191,4 +191,4 @@ if($_POST["drname"]) {
 	    </div>
 </div>
 
-<?php wp_footer(); ?>
+<?php get_footer(sub); ?>

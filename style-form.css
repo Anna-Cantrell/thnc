@@ -148,7 +148,6 @@ input:focus {
 @media only screen and (min-width:320px) {
 
 }
-@media only screen and (min-width:480px) {
 
 }
 @media only screen and (min-width:768px) {
@@ -844,6 +843,9 @@ textarea[type="text"] {
 }
 
 
+
+
+
 @media only screen and (max-width:767px) {
 	body::before {
 	  left: 0;
@@ -878,3 +880,34 @@ textarea[type="text"] {
 	padding-top: 0px;
 }
 }
+
+
+/* --------------- \
+     footer
+\ ----------------*/
+.footer {
+	position: absolute;
+	bottom: 0;
+}
+.foot-nav {
+	font-size: 14px;
+}
+.foot-nav li {
+	height: auto;
+	font-size: 1.2em;
+}
+
+.foot-nav li a:hover {
+	text-decoration: none;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 480px) {
+	.successTitle {
+		line-height: 1em;
+		margin-top: -10px;
+	}

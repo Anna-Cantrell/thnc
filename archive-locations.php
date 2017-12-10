@@ -3,6 +3,7 @@
  * Main Template
  *
  * This file is the main template for the WordPress theme.
+ * Template Name: archive-locations
  */
 get_header(); ?>
 
