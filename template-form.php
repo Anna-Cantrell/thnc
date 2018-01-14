@@ -190,5 +190,5 @@ if($_POST["drname"]) {
 	    </div>
 	    </div>
 </div>
-
+ </div>
 <?php get_footer(sub); ?>

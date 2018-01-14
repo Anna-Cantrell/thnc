@@ -886,7 +886,7 @@ textarea[type="text"] {
      footer
 \ ----------------*/
 .footer {
-	position: absolute;
+	position: relative;
 	bottom: 0;
 }
 .foot-nav {
